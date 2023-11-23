@@ -1,0 +1,112 @@
+<%- include("../partials/head.ejs") %> <%- include("../partials/sidebar.ejs") %>
+
+<body class=" ">
+  <div class="position-relative iq-banner">
+    <div class="iq-navbar-header" style="height: 60px"></div>
+    <div class="container-fluid content-inner mt-n5 py-0">
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="/">Home</a></li>
+          <li class="breadcrumb-item active" aria-current="page">Nạp thẻ</li>
+        </ol>
+      </nav>
+      <div class="row justify-content-center">
+        <div class="col-md-6">
+          <div class="card">
+            <div class="card-header">
+              <h4 class="text-center">Nạp tiền vào tài khoản</h4>
+            </div>
+            <div class="card-body">
+              <!-- Replace "/process" with your form submission URL -->
+              <div class="mb-3">
+                <label for="account" class="form-label">Seri</label>
+                <input type="text" class="form-control" id="serial" name="serial" placeholder="Nhập seri của thẻ cào" />
+              </div>
+              <div class="mb-3">
+                <label for="coins" class="form-label">Mã Thẻ</label>
+                <input type="text" class="form-control" id="code" name="code" placeholder="Nhập mã thẻ cào" />
+              </div>
+              <div class="mb-3">
+                <label for="coins" class="form-label">Loại thẻ</label>
+                <select class="form-select" aria-label=".form-select-sm" id="telco">
+                  <option selected="" value="VIETTEL">VIETTEL</option>
+                  <option value="VINAPHONE">VINAPHONE</option>
+                  <option value="MOBIFONE">MOBIFONE</option>
+                  <option value="GATE">GATE</option>
+                  <option value="ZING">ZING</option>
+                </select>
+              </div>
+              <div class="mb-3">
+                <label for="coins" class="form-label">Chọn mệnh giá</label>
+                <select class="form-select" aria-label=".form-select-sm" id="menhgia">
+                </select>
+              </div>
+              <div class="d-grid">
+                <button type="submit" id="submit" class="btn btn-primary">Đồng ý</button>
+              </div>
+              <span class="text-danger">Lưu ý: nếu spam sai quá nhiều lần sẽ bị khoá tài khoản!</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+    var telco = document.querySelector("#telco");
+    var menhgia = document.querySelector("#menhgia");
+    var submit = document.querySelector("#submit")
+    var serial = document.querySelector("#serial")
+    var code = document.querySelector("#code")
+
+    function changeMenhGia(value) {
+
+      var optionsData = <%-JSON.stringify(dataCK)%>;
+
+      var selectedOptionData = optionsData.filter(i => i.telco === value);
+
+      menhgia.innerHTML = "";
+
+      if (selectedOptionData) {
+        for (let key in selectedOptionData) {
+          if (selectedOptionData.hasOwnProperty(key)) {
+            var option = document.createElement("option");
+            option.value = selectedOptionData[key].value;
+            option.text = new Intl.NumberFormat('vi-VN', {
+              style: 'currency',
+              currency: 'VND'
+            }).format(selectedOptionData[key].value, 0) + " - " + selectedOptionData[key].fees + "%";
+            menhgia.appendChild(option);
+          }
+        }
+      } else {
+        console.log("Không tìm thấy thông tin cho giá trị đã chọn.");
+      }
+    }
+
+    changeMenhGia(telco.value);
+    telco.addEventListener("change", () => {
+      changeMenhGia(telco.value);
+    });
+    submit.addEventListener("click", (event) => {
+      event.preventDefault();
+      submit.disabled = true
+      submit.innerHTML = `<i class="fa fa-spinner fa-spin"></i> Đang gửi thẻ lên hệ thống ....`
+      $.ajax({
+        url: "/gachthe1s/guithe",
+        method: "POST",
+        data: {
+          serial: serial.value,
+          code: code.value,
+          amount: menhgia.value,
+          telco: telco.value
+        },
+        success: (data, status) => {
+          toastr[`${data?.error ? 'error' : 'success'}`](data?.message, `${data?.error ? "Lỗi" : "Thành Công"}`)
+          submit.disabled = false
+          submit.innerHTML = `Đồng ý`
+        }
+      })
+    })
+  </script>
+  <%- include("../partials/footer.ejs") %>
+</body>

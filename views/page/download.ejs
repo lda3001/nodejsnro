@@ -1,0 +1,197 @@
+<%-include("../partials/head.ejs")%>
+<body class="  ">
+  <!-- Sidebar -->
+  <%-include("../partials/sidebar.ejs")%>
+  <style>
+    /* CSS cho phần tử chứa các biểu đồ hình ảnh tải game *
+
+/* CSS cho danh sách các biểu đồ hình ảnh tải game */
+    .game-icons {
+      display: flex;
+      justify-content: center;
+    }
+
+    /* CSS cho mỗi biểu đồ hình ảnh tải game */
+    .game-icon {
+      background-color: #fff;
+      border-radius: 10px;
+      padding: 20px;
+      margin: 0 20px;
+      text-align: center;
+      cursor: pointer;
+      transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+      width: 100%;
+      box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    /* CSS cho biểu đồ hình ảnh tải game PC */
+    .game-icon.pc {
+      color: #007bff;
+    }
+
+    /* CSS cho biểu đồ hình ảnh tải game Android */
+    .game-icon.android {
+      color: #3cb371;
+    }
+
+    /* CSS cho biểu đồ hình ảnh tải game iOS */
+    .game-icon.ios {
+      color: #ff6347;
+    }
+
+    /* CSS cho biểu đồ hình ảnh tải game Java */
+    .game-icon.java {
+      color: #ffa500;
+    }
+
+    .dark .game-icon{
+      background-color: #282e42;
+
+    }
+    /* Hiệu ứng khi hover vào biểu đồ hình ảnh tải game */
+    .game-icon:hover {
+      transform: scale(1.05);
+      box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.3);
+    }
+
+    /* CSS cho biểu đồ hình ảnh tải game */
+    .game-icon img {
+      max-width: 100%;
+      height: auto;
+      margin-bottom: 10px;
+    }
+
+    /* CSS cho chữ mô tả nền tảng */
+    .game-icon p {
+      font-weight: bold;
+      font-size: 18px;
+      margin: 0;
+    }
+    /* CSS cho phần game download section trên thiết bị di động */
+    @media (max-width: 768px) {
+      .game-download-section {
+        padding: 10px; /* Giảm khoảng cách padding để tiết kiệm không gian */
+        width: 100%; /* Chiều rộng 100% để lấp đầy màn hình */
+        text-align: center; /* Căn giữa nội dung ngang */
+      }
+
+      /* Kiểu dáng cho tiêu đề "Download Our Game" */
+      .game-download-section h2 {
+        font-size: 24px; /* Giảm kích thước font chữ */
+        margin-bottom: 10px; /* Giảm khoảng cách bottom */
+      }
+
+      /* Sử dụng CSS Flex để căn giữa game icons */
+      .game-icons {
+        display: flex;
+        flex-wrap: wrap; /* Cho phép game icons tự xuống dòng khi không đủ không gian */
+        justify-content: center; /* Căn giữa theo chiều ngang */
+      }
+
+      /* Kiểu dáng cho mỗi game icon */
+      .game-icon {
+        /* Điều chỉnh kiểu dáng của game icon ở đây */
+        width: 168px; /* Đặt chiều rộng cố định */
+        height: 91px; /* Đặt chiều cao cố định */
+        margin: 5px; /* Khoảng cách giữa các game icon */
+        object-fit: cover; /* Đảm bảo tỷ lệ không bị bóp méo */
+      }
+
+      /* Kiểu dáng cho mô tả game */
+      .game-description {
+        text-align: left; /* Căn lề văn bản sang trái */
+      }
+
+      /* Kiểu dáng cho danh sách đặc điểm nổi bật */
+      .game-description ul {
+        padding-left: 20px; /* Thụt lề bên trái */
+      }
+
+      /* Kiểu dáng cho các mục trong danh sách đặc điểm nổi bật */
+      .game-description ul li {
+        margin-bottom: 8px; /* Giảm khoảng cách giữa các mục */
+      }
+    }
+  </style>
+  <!-- Nav Header Component Start -->
+  <div class="iq-navbar-header" style="height: 60px"></div>
+  <div class="conatiner-fluid content-inner mt-n5 py-0">
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/">Home</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Tải Game</li>
+      </ol>
+    </nav>
+    <div class="row">
+      <div class="card">
+        <div class="card-header">
+          <center><h2>Tải game</h2></center>
+        </div>
+        <div class="card-body">
+          <div class="game-download-section">
+            <div class="game-icons">
+              <div class="game-icon pc">
+                <i class="fas fa-desktop"></i>
+                <!-- Sử dụng fa icon cho PC -->
+                <p>PC</p>
+              </div>
+              <div class="game-icon android">
+                <i class="fab fa-android"></i>
+                <!-- Sử dụng fa icon cho Android -->
+                <p>Android</p>
+              </div>
+              <div class="game-icon ios">
+                <i class="fab fa-apple"></i>
+                <!-- Sử dụng fa icon cho iOS -->
+                <p>IOS ( Iphone )</p>
+              </div>
+              <div class="game-icon java">
+                <i class="fas fa-mobile-alt"></i>
+                <!-- Sử dụng fa icon cho Java -->
+                <p>Java</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="card">
+        <div class="card-header">
+          <h3>Giới thiệu</h3>
+        </div>
+        <div class="card-body">
+          <div class="game-description">
+            <p><strong>Ngọc Rồng Online</strong> là Trò Chơi Trực Tuyến với cốt truyện xoay quanh bộ truyện tranh 7 viên Ngọc Rồng. Người chơi sẽ hóa thân thành một trong những anh hùng của 3 hành tinh: Trái Đất, Xayda, Namếc. Cùng luyện tập, tăng cường sức mạnh và kỹ năng. Đoàn kết cùng chiến đấu chống lại các thế lực hung ác. Cùng nhau tranh tài.</p>
+            <p><strong>Đặc điểm nổi bật:</strong></p>
+            <ul>
+              <li>Thể loại hành động, nhập vai. Trực tiếp điều khiển nhân vật hành động. Dễ chơi, dễ điều khiển nhân vật. Đồ họa sắc nét. Có phiên bản đồ họa cao cho điện thoại mạnh và phiên bản pixel cho máy cấu hình thấp.</li>
+              <li>Cốt truyện bám sát nguyên tác. Người chơi sẽ gặp tất cả nhân vật từ Bunma, Quy lão kame, Jacky-chun, Tàu Pảy Pảy... cho đến Fide, Pic, Poc, Xên, Broly, đội Bojack.</li>
+              <li>Đặc điểm nổi bật nhất: Tham gia đánh doanh trại độc nhãn. Tham gia đại hội võ thuật. Tham gia săn lùng ngọc rồng để mang lại điều ước cho bản thân.</li>
+              <li>Tương thích tất cả các dòng máy trên thị trường hiện nay: Máy tính PC, Điện thoại di động Nokia Java, Android, iPhone, Windows Phone, và máy tính bảng Android, iPad.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="card">
+        <div class="card-header">
+          <h3>Bạn nên tải phiên bản nào?</h3>
+        </div>
+        <div class="card-body">
+          <div class="newbie-guide">
+            <ul>
+              <li>Nếu bạn dùng điện thoại Nokia cũ, có bàn phím như Nokia 6300, Nokia E72, Nokia X2, Nokia C2, Hãy tải bản JAVA</li>
+              <li>Nếu bạn dùng máy cảm ứng sử dụng Android như: Samsung Galaxy Y, HTC, LG, Sky, HKPhone. Hãy tải bản Android APK hoặc Android Playstore đều được.</li>
+              <li>Nếu bạn dùng điện thoại cảm ứng của NOKIA Lumia, hoặc các máy HTC chạy Windows Phone, hãy tải bản cho Windows Phone.</li>
+              <li>Nếu bạn dùng máy vi tính cá nhân, laptop chạy Windows XP - Windows 7, hãy tải bản PC.</li>
+              <li>Nếu bạn dùng iPhone, iPod, iPad, hãy tải bản iPhone Appstore. Nếu bạn biết chắc rằng máy mình đã jailbreak, có cài AppSync hoặc AppstoreVN, hãy cài từ bản iPhone jailbreak để tốc độ nhanh hơn.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Footer Section End -->
+  <%-include("../partials/footer.ejs")%>

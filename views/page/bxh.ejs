@@ -1,0 +1,51 @@
+<%-include("../partials/head.ejs")%> <%-include("../partials/sidebar.ejs")%>
+<body class=" ">
+  <div class="position-relative iq-banner">
+    <div class="iq-navbar-header" style="height: 60px"></div>
+    <div class="conatiner-fluid content-inner mt-n5 py-0">
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="/">Home</a></li>
+          <li class="breadcrumb-item"><a href="/bxh?type=topsm">Bảng xếp hạng</a></li>
+          <li class="breadcrumb-item active" aria-current="page"><%=type == 'topsm' ? "Top sức mạnh" : type == "topgiauco" ? "Top giàu có" : "Null"%></li>
+        </ol>
+      </nav>
+      <!--last part-->
+      <div class="row">
+        <div class="col-sm-12">
+          <div class="card">
+            <div class="card-header">
+              <h4>Bảng xếp hạng <%=type == 'topsm' ? 'sức mạnh' : 'giàu có'%></h4>
+            </div>
+            <div class="card-body">
+              <div class="table-responsive">
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th>Top</th>
+                      <th>Avatar</th>
+                      <th>Tên</th>
+                      <th><%=type == 'topsm' ? 'Sức mạnh' : 'Số tiền'%></th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <% type == 'topsm' ? allUser.sort((a, b) => b.sucmanh - a.sucmanh) : allUser.sort((a, b) => b.vnd - a.vnd) %> <% for (let i = 0; i < allUser.length; i++) { %> <% if (i < 10) { %>
+                    <tr>
+                      <td><%=i+1%></td>
+                      <td><img src="<%=options.getAvatar[allUser[i].character]%>" alt="Avatar 1" width="50" /></td>
+                      <td><%= allUser[i].username %></td>
+                      <td><%= type == 'topsm' ? allUser[i].sucmanh : new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(allUser[i].vnd) %></td>
+                    </tr>
+                    <% } else { %> <% break; %>
+                    <!-- Exit the loop when the first 3 users are displayed -->
+                    <% } %> <% } %>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <%-include("../partials/footer.ejs")%>

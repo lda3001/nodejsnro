@@ -1,0 +1,128 @@
+<%-include("./partials/head.ejs")%>
+<body class="  ">
+  <%-include("./partials/sidebar.ejs")%>
+  <style>
+.box_botss {
+    background-color: #fff;
+    color: #333; 
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
+.topic_name {
+    display: flex;
+    align-items: center;
+}
+
+.topic_name img {
+    max-width: 100%;
+    max-height: 100%;
+}
+
+.topic_name a {
+    text-decoration: none;
+    color: #333;
+    margin-right: 10px;
+}
+
+.box_name_eman {
+    font-size: 12px;
+    color: #888;
+}
+
+.box_name_eman span {
+    font-weight: bold;
+}
+
+/* CSS cho chế độ tối */
+.dark .box_botss {
+    background-color: #282e42;
+    color: #fff;
+}
+
+.dark .topic_name a {
+    color: #bbb;
+}
+
+</style>
+
+      <div class="iq-navbar-header" style="height: 60px">
+
+      </div>
+    <div class="conatiner-fluid content-inner mt-n5 py-0">               
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item active"><a href="/">Home</a></li>
+            </ol>
+        </nav>
+        <div class="row">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="card-title mb-0">Thông Báo Từ Admin</h4>
+                </div>
+                <div class="card-body">
+                    <div class="box_botss">
+                        <div class="topic_name">
+                            <div style="width: 30px; margin-right: 3px;">
+                                <img src="https://forum.ngocrongonline.com/avatar/522.png" alt="hackmkwifi (1 Sao)">
+                            </div>
+                            <div>
+                                <a href="index.php?for=forum&amp;do=list&amp;uid=19477259&amp;p=0&amp;sz=15" title="up điểm ạ">
+                                    <span>Mở Thành Viên Máy Chủ</span>
+                                </a>
+                                <div class="box_name_eman">
+                                    bởi <span style="color: red;">admin</span>
+                                    <span style="color: red;"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>              
+        <div class="row">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="card-title mb-0">Thảo Luận</h1>
+                </div>
+                <div class="card-body">
+                    <div class="box_botss">
+                        <div class="topic_name">
+                            <div style="width: 30px; margin-right: 3px;">
+                                <img src="https://forum.ngocrongonline.com/avatar/522.png" alt="hackmkwifi (1 Sao)">
+                            </div>
+                            <div>
+                                <a href="index.php?for=forum&amp;do=list&amp;uid=19477259&amp;p=0&amp;sz=15" title="up điểm ạ">
+                                    <span>Thử Nghiệm Giao Diện</span>
+                                </a>
+                                <div class="box_name_eman">
+                                    bởi <span style="color: red;">admin</span>
+                                    <span style="color: red;"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Thêm topic mới với name là "test" -->
+                    <div class="box_botss">
+                        <div class="topic_name">
+                            <div style="width: 30px; margin-right: 3px;">
+                                <img src="https://forum.ngocrongonline.com/avatar/522.png" alt="avatar">
+                            </div>
+                            <div>
+                                <a href="/" title="Thử Nghiệm Giao Diện">
+                                    <span>Thử Nghiệm Giao Diện</span>
+                                </a>
+                                <div class="box_name_eman">
+                                    bởi <span style="color: red;">admin</span>
+                                    <span style="color: red;"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+<%-include("./partials/footer.ejs")%>
